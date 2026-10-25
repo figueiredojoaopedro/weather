@@ -1,14 +1,6 @@
-// public partial class Program
-// {
-// 	public static void Main(string[] args)
-// 	{
-// 		var builder = WebApplication.CreateBuilder(args);
-// 		builder.Services.AddControllers();
-// 	}
-// }
+using Weather.Infrastructure;
 
-
-public class Program
+public partial class Program
 {
     public static void Main(string[] args)
     {
@@ -16,6 +8,8 @@ public class Program
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddTransient<Weather.Application.Usecases.GetRealtimeWeatherUseCase>();
+        builder.Services.AddWeatherInfrastructure();
 
         var app = builder.Build();
 
